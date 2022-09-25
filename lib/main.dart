@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
+import 'package:codeschool_login_page/pages/home.dart';
+import 'package:codeschool_login_page/pages/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,13 +13,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: Column(
-          children: [
-            Container(child: Image(image: AssetImage('img/dark.png'))),
-          ],
-        ),
-      ),
+      initialRoute: '/login',
+      routes: {
+        '/': (context) => Scaffold(
+              body: HomePage(),
+            ),
+        '/login': (context) => LoginPage(),
+      },
     );
   }
 }
