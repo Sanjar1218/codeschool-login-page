@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:codeschool_login_page/pages/register.dart';
 import 'package:flutter/material.dart';
 import 'package:codeschool_login_page/pages/home.dart';
 import 'package:codeschool_login_page/pages/login.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
               body: HomePage(),
             ),
         '/login': (context) => LoginPage(),
+        '/register': (context) => RegisterPage(),
       },
     );
   }

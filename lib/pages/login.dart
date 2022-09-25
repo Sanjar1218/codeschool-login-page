@@ -1,148 +1,165 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:codeschool_login_page/tools/alltools.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  bool eye = true;
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: EdgeInsets.all(23.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            backButton(context),
-            Text(
-              'Welcome back! Glad to see you, Again!',
-              style: urbanist7(30),
-            ),
-            Column(
-              // ignore: prefer_const_literals_to_create_immutables
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                TextField(
-                    decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Color.fromARGB(50, 218, 218, 218),
-                  label: Text(
-                    'Enter your email',
-                    style: TextStyle(
-                      fontStyle: FontStyle.normal,
-                      fontFamily: 'Urbanist-m',
-                      color: Color.fromARGB(100, 131, 145, 161),
-                    ),
-                  ),
-                  border: OutlineInputBorder(),
-                )),
-                SizedBox(height: 15),
-                TextField(
-                    decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Color.fromARGB(50, 218, 218, 218),
-                  label: Text(
-                    'Enter your password',
-                    style: TextStyle(
-                      fontStyle: FontStyle.normal,
-                      fontFamily: 'Urbanist-m',
-                      color: Color.fromARGB(100, 131, 145, 161),
-                    ),
-                  ),
-                  border: OutlineInputBorder(),
-                )),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Forgot Password?',
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: Color.fromARGB(255, 106, 112, 124),
-                    ),
-                  ),
-                )
-              ],
-            ),
-            Column(
-              children: [
-                BlackButton(
-                  name: 'Login',
-                  call: () {},
+    return SafeArea(
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Colors.white,
+        body: Padding(
+          padding: EdgeInsets.all(23.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              backButton(context),
+              SizedBox(
+                width: 300,
+                child: Text(
+                  'Welcome back! Glad to see you, Again!',
+                  style: urbanist7(32, 'urbanist'),
                 ),
-                Stack(
-                  alignment: Alignment.center,
-                  children: const [
-                    Divider(),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 30),
-                      child: Text(
-                        'Or Login with',
-                        style: TextStyle(
-                          backgroundColor: Colors.white,
+              ),
+              Column(
+                // ignore: prefer_const_literals_to_create_immutables
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  GreyButton(label: 'Enter your email'),
+                  Stack(
+                    alignment: Alignment.centerRight,
+                    children: [
+                      GreyButton(
+                        label: 'Enter your password',
+                        secure: eye,
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            eye = eye ? false : true;
+                          });
+                        },
+                        hoverColor: Colors.white,
+                        splashColor: Colors.white,
+                        highlightColor: Colors.white,
+                        icon: Image.asset('img/vector.png'),
+                      )
+                    ],
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Forgot Password?',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontFamily: 'urbanist',
+                        color: Color.fromARGB(255, 106, 112, 124),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Column(
+                children: [
+                  BlackButton(
+                    name: 'Login',
+                    call: () {},
+                  ),
+                  Stack(
+                    alignment: Alignment.center,
+                    children: const [
+                      Divider(),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 30),
+                        child: Text(
+                          'Or Login with',
+                          style: TextStyle(
+                            fontFamily: 'urbanist-m',
+                            backgroundColor: Colors.white,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    NewIcon(
-                      icon: Icon(
-                        Icons.facebook_sharp,
-                        color: Colors.blue,
-                        size: 40,
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      NewIcon(
+                        icon: Icon(
+                          Icons.facebook_sharp,
+                          color: Colors.blue,
+                          size: 40,
+                        ),
+                        onPressed: () {},
                       ),
-                      onPressed: () {},
-                    ),
-                    NewIcon(
-                      icon: Icon(
-                        Icons.facebook_sharp,
-                        color: Colors.blue,
-                        size: 40,
+                      NewIcon(
+                        icon: Image.asset('img/google.png'),
+                        onPressed: () {},
                       ),
-                      onPressed: () {},
-                    ),
-                    NewIcon(
-                      icon: Icon(
-                        Icons.facebook_sharp,
-                        color: Colors.blue,
-                        size: 40,
+                      NewIcon(
+                        icon: Icon(
+                          Icons.apple,
+                          color: Colors.black,
+                          size: 40,
+                        ),
+                        onPressed: () {},
                       ),
-                      onPressed: () {},
-                    ),
-                  ],
-                )
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Don\'t have an acount?',
-                  style: urbanist7(15),
-                ),
-                TextButton(onPressed: () {}, child: Text('Register Now'))
-              ],
-            )
-          ],
+                    ],
+                  )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Don\'t have an acount?',
+                    style: urbanist7(15, 'urbanist-m'),
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.popAndPushNamed(context, '/register');
+                      },
+                      child: Text(
+                        'Register Now',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 52, 196, 196),
+                          fontFamily: 'urbanist-m',
+                        ),
+                      ))
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 
-  TextStyle urbanist7(double fontSize) {
+  TextStyle urbanist7(double fontSize, String font) {
     return TextStyle(
-      fontFamily: 'Urbanist',
+      fontFamily: font,
       fontSize: fontSize,
     );
   }
 
   Container backButton(BuildContext context) {
     return Container(
+      width: 41,
+      height: 41,
+      padding: EdgeInsets.only(left: 4),
       decoration: BoxDecoration(
         border: Border.all(
           width: 1,
@@ -152,12 +169,15 @@ class LoginPage extends StatelessWidget {
       ),
       child: IconButton(
         color: Colors.black,
+        hoverColor: Colors.white,
+        splashColor: Colors.white,
+        highlightColor: Colors.white,
         onPressed: () {
           Navigator.popAndPushNamed(context, '/');
         },
         style:
             ButtonStyle(minimumSize: MaterialStateProperty.all(Size(41, 41))),
-        icon: Icon(Icons.arrow_back),
+        icon: Icon(Icons.arrow_back_ios),
       ),
     );
   }
