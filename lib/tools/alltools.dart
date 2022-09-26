@@ -67,8 +67,10 @@ class NewIcon extends StatelessWidget {
 class GreyButton extends StatelessWidget {
   final String label;
   final bool secure;
+  final double pad;
   const GreyButton({
     this.secure = false,
+    this.pad = 15,
     required this.label,
     Key? key,
   }) : super(key: key);
@@ -76,7 +78,7 @@ class GreyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 15),
+      padding: EdgeInsets.only(bottom: pad),
       child: TextField(
           obscureText: secure,
           decoration: InputDecoration(

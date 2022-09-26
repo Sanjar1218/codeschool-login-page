@@ -44,6 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                       GreyButton(
                         label: 'Enter your password',
                         secure: eye,
+                        pad: 0,
                       ),
                       IconButton(
                         onPressed: () {
